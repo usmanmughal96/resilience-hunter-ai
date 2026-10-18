@@ -12,9 +12,8 @@ COPY server/ ./server/
 COPY data/ ./data/
 COPY tests/ ./tests/
 
-# Optional: include pre-built web UI if present
-COPY web/dist ./web/dist 2>/dev/null || true
-COPY web/index.html ./web/index.html 2>/dev/null || true
+# Include web UI entry (server falls back to inline HTML / web/ if dist is absent)
+COPY web/index.html ./web/index.html
 
 ENV NODE_ENV=production
 ENV PORT=8080
